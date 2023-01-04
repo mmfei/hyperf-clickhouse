@@ -40,22 +40,22 @@ class ConnectionResolver implements ConnectionResolverInterface
      * @param string $name
      * @return ConnectionInterface
      */
-    public function connection($name = null)
+    public function connection(?string $name = null): ConnectionInterface
     {
         if (is_null($name)) {
             $name = $this->getDefaultConnection();
         }
-        
+
         $connection = null;
         $id = $this->getContextKey($name);
         if (Context::has($id)) {
             $connection = Context::get($id);
         }
-        
+
         if (! $connection instanceof ConnectionInterface) {
             $pool = $this->factory->getPool($name);
             $connection = $pool->get();
-            
+
             try {
                 // PDO is initialized as an anonymous function, so there is no IO exception,
                 // but if other exceptions are thrown, the connection will not return to the connection pool properly.
@@ -79,7 +79,7 @@ class ConnectionResolver implements ConnectionResolverInterface
      *
      * @return string
      */
-    public function getDefaultConnection()
+    public function getDefaultConnection(): string
     {
         return $this->default;
     }
@@ -89,7 +89,7 @@ class ConnectionResolver implements ConnectionResolverInterface
      *
      * @param string $name
      */
-    public function setDefaultConnection($name)
+    public function setDefaultConnection(string $name): void
     {
         $this->default = $name;
     }
