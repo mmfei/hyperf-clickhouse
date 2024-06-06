@@ -2,6 +2,7 @@
 
 namespace Xtwoend\HyperfClickhouse;
 
+use Hyperf\Mm\Utils\LogUtil;
 use Tinderbox\Clickhouse\Client;
 use Tinderbox\Clickhouse\Server;
 use Psr\Container\ContainerInterface;
@@ -22,7 +23,7 @@ class Connection extends BaseConnection implements ConnectionInterface, DbConnec
     /**
      * @var DbPool
      */
-    protected $pool;
+    protected \Hyperf\Contract\PoolInterface $pool;
 
     /**
      * @var DbConnectionInterface
@@ -126,6 +127,7 @@ class Connection extends BaseConnection implements ConnectionInterface, DbConnec
      */
     public function makeConnection($config)
     {
+        LogUtil::debug($config);
         $server = new Server(
             $config['host'],
             $config['port'], 

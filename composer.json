@@ -15,7 +15,10 @@
         }
     ],
     "require": {
-        "the-tinderbox/clickhouse-builder": "^5.3"
+        "hyperf/db-connection": "^3.0",
+        "hyperf/support": "^3.0",
+        "hyperf/utils": "^3.0",
+        "the-tinderbox/clickhouse-builder": "^6.0"
     },
     "config": {
         "sort-packages": true

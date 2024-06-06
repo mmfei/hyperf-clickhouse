@@ -2,8 +2,8 @@
 
 namespace Xtwoend\HyperfClickhouse;
 
-use Hyperf\Utils\Context;
-use Hyperf\Utils\Coroutine;
+use Hyperf\Context\Context;
+use Hyperf\Coroutine\Coroutine;
 use Psr\Container\ContainerInterface;
 use Hyperf\Database\ConnectionInterface;
 use Xtwoend\HyperfClickhouse\Pool\PoolFactory;
